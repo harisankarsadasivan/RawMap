@@ -94,10 +94,6 @@ std::string fast5_get_read_id_single_fast5(fast5_file& fh)
     // this function is not supported for multi-fast5 files
     assert(!fh.is_multi_fast5);
 
-    int ret;
-    hid_t read_name_attribute, raw_group, attribute_type;
-    size_t storage_size = 0;
-    char* read_name_str = NULL;
 
     std::string out = "";
     
