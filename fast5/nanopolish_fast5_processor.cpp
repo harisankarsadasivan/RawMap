@@ -7,22 +7,42 @@
 // over a collection of fast5 files and performing some
 // action on each read in parallel
 //
-//#include "nanopolish_common.h"
-#include "fast5/nanopolish_fast5_io.h"
-#include "fast5/nanopolish_fast5_io.cpp"
+#include "nanopolish_fast5_processor.h"
+#include "nanopolish_common.h"
+#include "nanopolish_fast5_io.h"
 #include <assert.h>
 #include <omp.h>
 #include <vector>
-#include <iostream>
-#include "fast5/nanopolish_fast5_loader.h"
 
+Fast5Processor::Fast5Processor(const ReadDB& read_db,
+                               const int num_threads,
+                               const int batch_size) :
+                                m_num_threads(num_threads),
+                                m_batch_size(batch_size)
 
-int main()
 {
-    std::string fn ="batch1.fast5";
-    std::vector<std::string> m_fast5s;
+    m_fast5s = read_db.get_unique_fast5s();
+}
 
-    m_fast5s.push_back(fn);
+Fast5Processor::Fast5Processor(const std::string& fast5_file,
+                               const int num_threads,
+                               const int batch_size) :
+                                m_num_threads(num_threads),
+                                m_batch_size(batch_size)
+{
+    m_fast5s.push_back(fast5_file);
+}
+
+Fast5Processor::~Fast5Processor()
+{
+}
+
+void Fast5Processor::parallel_run(fast5_processor_work_function func)
+{
+    // store number of threads so we can restore it after we're done
+    int prev_num_threads = omp_get_num_threads();
+    omp_set_num_threads(m_num_threads);
+
     for(size_t i = 0; i < m_fast5s.size(); ++i) {
         fast5_file f5_file = fast5_open(m_fast5s[i]);
         if(!fast5_is_open(f5_file)) {
@@ -50,13 +70,16 @@ int main()
             data.channel_params = fast5_get_channel_params(f5_file, read_name);
             data.rt = fast5_get_raw_samples(f5_file, read_name, data.channel_params);
             data.start_time = fast5_get_start_time(f5_file, read_name);
-            for(std::uint32_t i=0;i<data.rt.n;i++)
-               std::cout<<data.rt.raw[i]<<"\n";
             fast5_data.push_back(data);
         }
 
         fast5_close(f5_file);
 
+        // run in parallel
+        #pragma omp parallel for schedule(dynamic)
+        for(size_t j = 0; j < fast5_data.size(); ++j) {
+            func(fast5_data[j]);
+        }
 
         // destroy fast5 data
         for(size_t j = 0; j < fast5_data.size(); ++j) {
@@ -65,5 +88,7 @@ int main()
         }
         fast5_data.clear();
     }
-return 0;
+
+    // restore number of threads
+    omp_set_num_threads(prev_num_threads);
 }

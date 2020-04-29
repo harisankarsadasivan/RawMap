@@ -8,13 +8,13 @@
 // action on each read in parallel
 //
 //#include "nanopolish_common.h"
-#include "fast5/nanopolish_fast5_io.h"
-#include "fast5/nanopolish_fast5_io.cpp"
+#include "nanopolish_fast5_io.h"
+#include "nanopolish_fast5_io.cpp"
 #include <assert.h>
 #include <omp.h>
 #include <vector>
 #include <iostream>
-#include "fast5/nanopolish_fast5_loader.h"
+#include "nanopolish_fast5_loader.h"
 
 
 int main()
