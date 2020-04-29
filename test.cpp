@@ -15,14 +15,22 @@
 #include <vector>
 #include <iostream>
 #include "fast5/nanopolish_fast5_loader.h"
-
+#include <fstream>
+#include <string>
 
 int main()
 {
-    std::string fn ="batch1.fast5";
     std::vector<std::string> m_fast5s;
+    std::string fn ="fast5_filename.txt";
+    std::ifstream f(fn);
+    std::string line;
+    while(!f.eof()){
+     std::getline(f,line);
+     if(line.size()>0)
+     m_fast5s.push_back(line);
+    }
+    f.close();
 
-    m_fast5s.push_back(fn);
     for(size_t i = 0; i < m_fast5s.size(); ++i) {
         fast5_file f5_file = fast5_open(m_fast5s[i]);
         if(!fast5_is_open(f5_file)) {
