@@ -8,19 +8,19 @@
 // action on each read in parallel
 //
 //#include "nanopolish_common.h"
-#include "fast5/nanopolish_fast5_io.h"
 #include "fast5/nanopolish_fast5_io.cpp"
 #include <assert.h>
 #include <omp.h>
 #include <vector>
 #include <iostream>
-#include "fast5/nanopolish_fast5_loader.h"
 #include "fast5/nanopolish_fast5_loader.cpp"
 #include <fstream>
 #include <string>
 #include "fast5/hjorth_params.cpp"
+#include "svm/svm.cpp"
 int main()
 {
+    mySVM s;
     std::vector<std::string> m_fast5s;
     std::string fn ="fast5_filename.txt";
     std::ifstream f(fn);
@@ -38,7 +38,7 @@ int main()
             continue;
         }
 
-        std::vector<Fast5Data> fast5_data;
+        //std::vector<Fast5Data> fast5_data;
 
         std::vector<std::string> reads = fast5_get_multi_read_groups(f5_file);
         
@@ -64,18 +64,22 @@ int main()
             //   std::cout<<data.rt.raw[i]<<"\n";
             H.calc_hjorth(data.rt);
 	    std::cout<<H.A<<","<<H.M<<","<<H.C<<"\n";
+            s.push_data(H,-1);
             //fast5_data.push_back(data);
         }
 
         fast5_close(f5_file);
 
 
-        // destroy fast5 data
-        for(size_t j = 0; j < fast5_data.size(); ++j) {
-            free(fast5_data[j].rt.raw);
-            //fast5_data[j].rt.raw = NULL;
-        }
-        fast5_data.clear();
+        //// destroy fast5 data
+        //for(size_t j = 0; j < fast5_data.size(); ++j) {
+        //    free(fast5_data[j].rt.raw);
+        //    //fast5_data[j].rt.raw = NULL;
+        //}
+        //fast5_data.clear();
+
     }
+
+        s.train_SVM();
 return 0;
 }

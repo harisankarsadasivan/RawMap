@@ -1,0 +1,474 @@
+g++ -Wall -std=c++11 -O3 -o test test.cpp `pkg-config opencv --cflags --libs` -lz -lm -lstdc++ -ldl -lhdf5 -I/usr/include/opencv  -lopencv_calib3d -lopencv_contrib -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_highgui -lopencv_imgproc -lopencv_legacy -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videostab 
+In file included from test.cpp:11:0:
+fast5/nanopolish_fast5_io.cpp: In function ‘std::vector<std::basic_string<char> > fast5_get_multi_read_groups(fast5_file&)’:
+fast5/nanopolish_fast5_io.cpp:74:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         if(size > buffer_size) {
+                   ^
+In file included from test.cpp:20:0:
+svm/svm.cpp: In member function ‘void mySVM::train_SVM()’:
+svm/svm.cpp:4:53: error: no matching function for call to ‘cv::Mat::Mat(std::vector<float>::size_type, int, int, std::vector<float>&)’
+     Mat trainingDataMat(data.size(), 3, CV_32F, data);
+                                                     ^
+svm/svm.cpp:4:53: note: candidates are:
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1728:14: note: cv::Mat::Mat(const cv::gpu::GpuMat&)
+     explicit Mat(const gpu::GpuMat& m);
+              ^
+/usr/include/opencv2/core/core.hpp:1728:14: note:   candidate expects 1 argument, 4 provided
+/usr/include/opencv2/core/core.hpp:1725:37: note: template<class _Tp> cv::Mat::Mat(const cv::MatCommaInitializer_<_Tp>&)
+     template<typename _Tp> explicit Mat(const MatCommaInitializer_<_Tp>& commaInitializer);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1725:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:4:53: note:   mismatched types ‘const cv::MatCommaInitializer_<_Tp>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+     Mat trainingDataMat(data.size(), 3, CV_32F, data);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1723:37: note: template<class _Tp> cv::Mat::Mat(const cv::Point3_<_Tp>&, bool)
+     template<typename _Tp> explicit Mat(const Point3_<_Tp>& pt, bool copyData=true);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1723:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:4:53: note:   mismatched types ‘const cv::Point3_<_Tp>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+     Mat trainingDataMat(data.size(), 3, CV_32F, data);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1721:37: note: template<class _Tp> cv::Mat::Mat(const cv::Point_<_Tp>&, bool)
+     template<typename _Tp> explicit Mat(const Point_<_Tp>& pt, bool copyData=true);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1721:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:4:53: note:   mismatched types ‘const cv::Point_<_Tp>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+     Mat trainingDataMat(data.size(), 3, CV_32F, data);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1719:51: note: template<class _Tp, int m, int n> cv::Mat::Mat(const cv::Matx<_Tp, m, n>&, bool)
+     template<typename _Tp, int m, int n> explicit Mat(const Matx<_Tp, m, n>& mtx, bool copyData=true);
+                                                   ^
+/usr/include/opencv2/core/core.hpp:1719:51: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:4:53: note:   mismatched types ‘const cv::Matx<_Tp, m, n>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+     Mat trainingDataMat(data.size(), 3, CV_32F, data);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1717:44: note: template<class _Tp, int n> cv::Mat::Mat(const cv::Vec<_Tp, m>&, bool)
+     template<typename _Tp, int n> explicit Mat(const Vec<_Tp, n>& vec, bool copyData=true);
+                                            ^
+/usr/include/opencv2/core/core.hpp:1717:44: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:4:53: note:   mismatched types ‘const cv::Vec<_Tp, m>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+     Mat trainingDataMat(data.size(), 3, CV_32F, data);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1715:37: note: template<class _Tp> cv::Mat::Mat(const std::vector<_RealType>&, bool)
+     template<typename _Tp> explicit Mat(const vector<_Tp>& vec, bool copyData=false);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1715:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:4:53: note:   mismatched types ‘const std::vector<_RealType>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+     Mat trainingDataMat(data.size(), 3, CV_32F, data);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1713:5: note: cv::Mat::Mat(const IplImage*, bool)
+     Mat(const IplImage* img, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1713:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1711:5: note: cv::Mat::Mat(const CvMatND*, bool)
+     Mat(const CvMatND* m, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1711:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1709:5: note: cv::Mat::Mat(const CvMat*, bool)
+     Mat(const CvMat* m, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1709:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1707:5: note: cv::Mat::Mat(const cv::Mat&, const cv::Range*)
+     Mat(const Mat& m, const Range* ranges);
+     ^
+/usr/include/opencv2/core/core.hpp:1707:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1706:5: note: cv::Mat::Mat(const cv::Mat&, const Rect&)
+     Mat(const Mat& m, const Rect& roi);
+     ^
+/usr/include/opencv2/core/core.hpp:1706:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1705:5: note: cv::Mat::Mat(const cv::Mat&, const cv::Range&, const cv::Range&)
+     Mat(const Mat& m, const Range& rowRange, const Range& colRange=Range::all());
+     ^
+/usr/include/opencv2/core/core.hpp:1705:5: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1702:5: note: cv::Mat::Mat(int, const int*, int, void*, const size_t*)
+     Mat(int ndims, const int* sizes, int type, void* data, const size_t* steps=0);
+     ^
+/usr/include/opencv2/core/core.hpp:1702:5: note:   no known conversion for argument 4 from ‘std::vector<float>’ to ‘void*’
+In file included from /usr/include/opencv2/core/core.hpp:4787:0,
+                 from svm/svm.h:2,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/mat.hpp:151:8: note: cv::Mat::Mat(cv::Size, int, void*, size_t)
+ inline Mat::Mat(Size _sz, int _type, void* _data, size_t _step)
+        ^
+/usr/include/opencv2/core/mat.hpp:151:8: note:   no known conversion for argument 1 from ‘std::vector<float>::size_type {aka long unsigned int}’ to ‘cv::Size’
+/usr/include/opencv2/core/mat.hpp:129:8: note: cv::Mat::Mat(int, int, int, void*, size_t)
+ inline Mat::Mat(int _rows, int _cols, int _type, void* _data, size_t _step)
+        ^
+/usr/include/opencv2/core/mat.hpp:129:8: note:   no known conversion for argument 4 from ‘std::vector<float>’ to ‘void*’
+/usr/include/opencv2/core/mat.hpp:111:8: note: cv::Mat::Mat(const cv::Mat&)
+ inline Mat::Mat(const Mat& m)
+        ^
+/usr/include/opencv2/core/mat.hpp:111:8: note:   candidate expects 1 argument, 4 provided
+/usr/include/opencv2/core/mat.hpp:104:8: note: cv::Mat::Mat(int, const int*, int, const Scalar&)
+ inline Mat::Mat(int _dims, const int* _sz, int _type, const Scalar& _s) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:104:8: note:   no known conversion for argument 4 from ‘std::vector<float>’ to ‘const Scalar& {aka const cv::Scalar_<double>&}’
+/usr/include/opencv2/core/mat.hpp:98:8: note: cv::Mat::Mat(int, const int*, int)
+ inline Mat::Mat(int _dims, const int* _sz, int _type) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:98:8: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:91:8: note: cv::Mat::Mat(cv::Size, int, const Scalar&)
+ inline Mat::Mat(Size _sz, int _type, const Scalar& _s) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:91:8: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:78:8: note: cv::Mat::Mat(int, int, int, const Scalar&)
+ inline Mat::Mat(int _rows, int _cols, int _type, const Scalar& _s) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:78:8: note:   no known conversion for argument 4 from ‘std::vector<float>’ to ‘const Scalar& {aka const cv::Scalar_<double>&}’
+/usr/include/opencv2/core/mat.hpp:85:8: note: cv::Mat::Mat(cv::Size, int)
+ inline Mat::Mat(Size _sz, int _type) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:85:8: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:72:8: note: cv::Mat::Mat(int, int, int)
+ inline Mat::Mat(int _rows, int _cols, int _type) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:72:8: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:67:8: note: cv::Mat::Mat()
+ inline Mat::Mat() : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:67:8: note:   candidate expects 0 arguments, 4 provided
+In file included from test.cpp:20:0:
+svm/svm.cpp:5:53: error: no matching function for call to ‘cv::Mat::Mat(std::vector<short unsigned int>::size_type, int, int, std::vector<short unsigned int>&)’
+     Mat labelsMat(labels.size(), 1, CV_32SC1, labels);
+                                                     ^
+svm/svm.cpp:5:53: note: candidates are:
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1728:14: note: cv::Mat::Mat(const cv::gpu::GpuMat&)
+     explicit Mat(const gpu::GpuMat& m);
+              ^
+/usr/include/opencv2/core/core.hpp:1728:14: note:   candidate expects 1 argument, 4 provided
+/usr/include/opencv2/core/core.hpp:1725:37: note: template<class _Tp> cv::Mat::Mat(const cv::MatCommaInitializer_<_Tp>&)
+     template<typename _Tp> explicit Mat(const MatCommaInitializer_<_Tp>& commaInitializer);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1725:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:5:53: note:   mismatched types ‘const cv::MatCommaInitializer_<_Tp>’ and ‘std::vector<short unsigned int>::size_type {aka long unsigned int}’
+     Mat labelsMat(labels.size(), 1, CV_32SC1, labels);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1723:37: note: template<class _Tp> cv::Mat::Mat(const cv::Point3_<_Tp>&, bool)
+     template<typename _Tp> explicit Mat(const Point3_<_Tp>& pt, bool copyData=true);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1723:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:5:53: note:   mismatched types ‘const cv::Point3_<_Tp>’ and ‘std::vector<short unsigned int>::size_type {aka long unsigned int}’
+     Mat labelsMat(labels.size(), 1, CV_32SC1, labels);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1721:37: note: template<class _Tp> cv::Mat::Mat(const cv::Point_<_Tp>&, bool)
+     template<typename _Tp> explicit Mat(const Point_<_Tp>& pt, bool copyData=true);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1721:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:5:53: note:   mismatched types ‘const cv::Point_<_Tp>’ and ‘std::vector<short unsigned int>::size_type {aka long unsigned int}’
+     Mat labelsMat(labels.size(), 1, CV_32SC1, labels);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1719:51: note: template<class _Tp, int m, int n> cv::Mat::Mat(const cv::Matx<_Tp, m, n>&, bool)
+     template<typename _Tp, int m, int n> explicit Mat(const Matx<_Tp, m, n>& mtx, bool copyData=true);
+                                                   ^
+/usr/include/opencv2/core/core.hpp:1719:51: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:5:53: note:   mismatched types ‘const cv::Matx<_Tp, m, n>’ and ‘std::vector<short unsigned int>::size_type {aka long unsigned int}’
+     Mat labelsMat(labels.size(), 1, CV_32SC1, labels);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1717:44: note: template<class _Tp, int n> cv::Mat::Mat(const cv::Vec<_Tp, m>&, bool)
+     template<typename _Tp, int n> explicit Mat(const Vec<_Tp, n>& vec, bool copyData=true);
+                                            ^
+/usr/include/opencv2/core/core.hpp:1717:44: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:5:53: note:   mismatched types ‘const cv::Vec<_Tp, m>’ and ‘std::vector<short unsigned int>::size_type {aka long unsigned int}’
+     Mat labelsMat(labels.size(), 1, CV_32SC1, labels);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1715:37: note: template<class _Tp> cv::Mat::Mat(const std::vector<_RealType>&, bool)
+     template<typename _Tp> explicit Mat(const vector<_Tp>& vec, bool copyData=false);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1715:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:5:53: note:   mismatched types ‘const std::vector<_RealType>’ and ‘std::vector<short unsigned int>::size_type {aka long unsigned int}’
+     Mat labelsMat(labels.size(), 1, CV_32SC1, labels);
+                                                     ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1713:5: note: cv::Mat::Mat(const IplImage*, bool)
+     Mat(const IplImage* img, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1713:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1711:5: note: cv::Mat::Mat(const CvMatND*, bool)
+     Mat(const CvMatND* m, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1711:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1709:5: note: cv::Mat::Mat(const CvMat*, bool)
+     Mat(const CvMat* m, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1709:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1707:5: note: cv::Mat::Mat(const cv::Mat&, const cv::Range*)
+     Mat(const Mat& m, const Range* ranges);
+     ^
+/usr/include/opencv2/core/core.hpp:1707:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1706:5: note: cv::Mat::Mat(const cv::Mat&, const Rect&)
+     Mat(const Mat& m, const Rect& roi);
+     ^
+/usr/include/opencv2/core/core.hpp:1706:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1705:5: note: cv::Mat::Mat(const cv::Mat&, const cv::Range&, const cv::Range&)
+     Mat(const Mat& m, const Range& rowRange, const Range& colRange=Range::all());
+     ^
+/usr/include/opencv2/core/core.hpp:1705:5: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1702:5: note: cv::Mat::Mat(int, const int*, int, void*, const size_t*)
+     Mat(int ndims, const int* sizes, int type, void* data, const size_t* steps=0);
+     ^
+/usr/include/opencv2/core/core.hpp:1702:5: note:   no known conversion for argument 4 from ‘std::vector<short unsigned int>’ to ‘void*’
+In file included from /usr/include/opencv2/core/core.hpp:4787:0,
+                 from svm/svm.h:2,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/mat.hpp:151:8: note: cv::Mat::Mat(cv::Size, int, void*, size_t)
+ inline Mat::Mat(Size _sz, int _type, void* _data, size_t _step)
+        ^
+/usr/include/opencv2/core/mat.hpp:151:8: note:   no known conversion for argument 1 from ‘std::vector<short unsigned int>::size_type {aka long unsigned int}’ to ‘cv::Size’
+/usr/include/opencv2/core/mat.hpp:129:8: note: cv::Mat::Mat(int, int, int, void*, size_t)
+ inline Mat::Mat(int _rows, int _cols, int _type, void* _data, size_t _step)
+        ^
+/usr/include/opencv2/core/mat.hpp:129:8: note:   no known conversion for argument 4 from ‘std::vector<short unsigned int>’ to ‘void*’
+/usr/include/opencv2/core/mat.hpp:111:8: note: cv::Mat::Mat(const cv::Mat&)
+ inline Mat::Mat(const Mat& m)
+        ^
+/usr/include/opencv2/core/mat.hpp:111:8: note:   candidate expects 1 argument, 4 provided
+/usr/include/opencv2/core/mat.hpp:104:8: note: cv::Mat::Mat(int, const int*, int, const Scalar&)
+ inline Mat::Mat(int _dims, const int* _sz, int _type, const Scalar& _s) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:104:8: note:   no known conversion for argument 4 from ‘std::vector<short unsigned int>’ to ‘const Scalar& {aka const cv::Scalar_<double>&}’
+/usr/include/opencv2/core/mat.hpp:98:8: note: cv::Mat::Mat(int, const int*, int)
+ inline Mat::Mat(int _dims, const int* _sz, int _type) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:98:8: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:91:8: note: cv::Mat::Mat(cv::Size, int, const Scalar&)
+ inline Mat::Mat(Size _sz, int _type, const Scalar& _s) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:91:8: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:78:8: note: cv::Mat::Mat(int, int, int, const Scalar&)
+ inline Mat::Mat(int _rows, int _cols, int _type, const Scalar& _s) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:78:8: note:   no known conversion for argument 4 from ‘std::vector<short unsigned int>’ to ‘const Scalar& {aka const cv::Scalar_<double>&}’
+/usr/include/opencv2/core/mat.hpp:85:8: note: cv::Mat::Mat(cv::Size, int)
+ inline Mat::Mat(Size _sz, int _type) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:85:8: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:72:8: note: cv::Mat::Mat(int, int, int)
+ inline Mat::Mat(int _rows, int _cols, int _type) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:72:8: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:67:8: note: cv::Mat::Mat()
+ inline Mat::Mat() : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:67:8: note:   candidate expects 0 arguments, 4 provided
+In file included from test.cpp:20:0:
+svm/svm.cpp:6:11: error: ‘create’ is not a member of ‘cv::SVM {aka CvSVM}’
+     svm = SVM::create();
+           ^
+svm/svm.cpp:7:10: error: ‘class CvSVM’ has no member named ‘setType’
+     svm->setType(SVM::C_SVC);
+          ^
+svm/svm.cpp:8:10: error: ‘class CvSVM’ has no member named ‘setKernel’
+     svm->setKernel(SVM::RBF);
+          ^
+svm/svm.cpp:9:10: error: ‘class CvSVM’ has no member named ‘setTermCriteria’
+     svm->setTermCriteria(TermCriteria(TermCriteria::MAX_ITER, 1000, 1e-6));
+          ^
+svm/svm.cpp:10:33: error: ‘ROW_SAMPLE’ was not declared in this scope
+     svm->train(trainingDataMat, ROW_SAMPLE, labelsMat);
+                                 ^
+svm/svm.cpp: In member function ‘float mySVM::test_SVM()’:
+svm/svm.cpp:15:49: error: no matching function for call to ‘cv::Mat::Mat(std::vector<float>::size_type, int, int, std::vector<float>&)’
+  Mat testingDataMat(data.size(), 3, CV_32F, data);
+                                                 ^
+svm/svm.cpp:15:49: note: candidates are:
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1728:14: note: cv::Mat::Mat(const cv::gpu::GpuMat&)
+     explicit Mat(const gpu::GpuMat& m);
+              ^
+/usr/include/opencv2/core/core.hpp:1728:14: note:   candidate expects 1 argument, 4 provided
+/usr/include/opencv2/core/core.hpp:1725:37: note: template<class _Tp> cv::Mat::Mat(const cv::MatCommaInitializer_<_Tp>&)
+     template<typename _Tp> explicit Mat(const MatCommaInitializer_<_Tp>& commaInitializer);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1725:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:15:49: note:   mismatched types ‘const cv::MatCommaInitializer_<_Tp>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+  Mat testingDataMat(data.size(), 3, CV_32F, data);
+                                                 ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1723:37: note: template<class _Tp> cv::Mat::Mat(const cv::Point3_<_Tp>&, bool)
+     template<typename _Tp> explicit Mat(const Point3_<_Tp>& pt, bool copyData=true);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1723:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:15:49: note:   mismatched types ‘const cv::Point3_<_Tp>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+  Mat testingDataMat(data.size(), 3, CV_32F, data);
+                                                 ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1721:37: note: template<class _Tp> cv::Mat::Mat(const cv::Point_<_Tp>&, bool)
+     template<typename _Tp> explicit Mat(const Point_<_Tp>& pt, bool copyData=true);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1721:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:15:49: note:   mismatched types ‘const cv::Point_<_Tp>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+  Mat testingDataMat(data.size(), 3, CV_32F, data);
+                                                 ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1719:51: note: template<class _Tp, int m, int n> cv::Mat::Mat(const cv::Matx<_Tp, m, n>&, bool)
+     template<typename _Tp, int m, int n> explicit Mat(const Matx<_Tp, m, n>& mtx, bool copyData=true);
+                                                   ^
+/usr/include/opencv2/core/core.hpp:1719:51: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:15:49: note:   mismatched types ‘const cv::Matx<_Tp, m, n>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+  Mat testingDataMat(data.size(), 3, CV_32F, data);
+                                                 ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1717:44: note: template<class _Tp, int n> cv::Mat::Mat(const cv::Vec<_Tp, m>&, bool)
+     template<typename _Tp, int n> explicit Mat(const Vec<_Tp, n>& vec, bool copyData=true);
+                                            ^
+/usr/include/opencv2/core/core.hpp:1717:44: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:15:49: note:   mismatched types ‘const cv::Vec<_Tp, m>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+  Mat testingDataMat(data.size(), 3, CV_32F, data);
+                                                 ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1715:37: note: template<class _Tp> cv::Mat::Mat(const std::vector<_RealType>&, bool)
+     template<typename _Tp> explicit Mat(const vector<_Tp>& vec, bool copyData=false);
+                                     ^
+/usr/include/opencv2/core/core.hpp:1715:37: note:   template argument deduction/substitution failed:
+In file included from test.cpp:20:0:
+svm/svm.cpp:15:49: note:   mismatched types ‘const std::vector<_RealType>’ and ‘std::vector<float>::size_type {aka long unsigned int}’
+  Mat testingDataMat(data.size(), 3, CV_32F, data);
+                                                 ^
+In file included from svm/svm.h:2:0,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/core.hpp:1713:5: note: cv::Mat::Mat(const IplImage*, bool)
+     Mat(const IplImage* img, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1713:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1711:5: note: cv::Mat::Mat(const CvMatND*, bool)
+     Mat(const CvMatND* m, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1711:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1709:5: note: cv::Mat::Mat(const CvMat*, bool)
+     Mat(const CvMat* m, bool copyData=false);
+     ^
+/usr/include/opencv2/core/core.hpp:1709:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1707:5: note: cv::Mat::Mat(const cv::Mat&, const cv::Range*)
+     Mat(const Mat& m, const Range* ranges);
+     ^
+/usr/include/opencv2/core/core.hpp:1707:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1706:5: note: cv::Mat::Mat(const cv::Mat&, const Rect&)
+     Mat(const Mat& m, const Rect& roi);
+     ^
+/usr/include/opencv2/core/core.hpp:1706:5: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1705:5: note: cv::Mat::Mat(const cv::Mat&, const cv::Range&, const cv::Range&)
+     Mat(const Mat& m, const Range& rowRange, const Range& colRange=Range::all());
+     ^
+/usr/include/opencv2/core/core.hpp:1705:5: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/core.hpp:1702:5: note: cv::Mat::Mat(int, const int*, int, void*, const size_t*)
+     Mat(int ndims, const int* sizes, int type, void* data, const size_t* steps=0);
+     ^
+/usr/include/opencv2/core/core.hpp:1702:5: note:   no known conversion for argument 4 from ‘std::vector<float>’ to ‘void*’
+In file included from /usr/include/opencv2/core/core.hpp:4787:0,
+                 from svm/svm.h:2,
+                 from svm/svm.cpp:1,
+                 from test.cpp:20:
+/usr/include/opencv2/core/mat.hpp:151:8: note: cv::Mat::Mat(cv::Size, int, void*, size_t)
+ inline Mat::Mat(Size _sz, int _type, void* _data, size_t _step)
+        ^
+/usr/include/opencv2/core/mat.hpp:151:8: note:   no known conversion for argument 1 from ‘std::vector<float>::size_type {aka long unsigned int}’ to ‘cv::Size’
+/usr/include/opencv2/core/mat.hpp:129:8: note: cv::Mat::Mat(int, int, int, void*, size_t)
+ inline Mat::Mat(int _rows, int _cols, int _type, void* _data, size_t _step)
+        ^
+/usr/include/opencv2/core/mat.hpp:129:8: note:   no known conversion for argument 4 from ‘std::vector<float>’ to ‘void*’
+/usr/include/opencv2/core/mat.hpp:111:8: note: cv::Mat::Mat(const cv::Mat&)
+ inline Mat::Mat(const Mat& m)
+        ^
+/usr/include/opencv2/core/mat.hpp:111:8: note:   candidate expects 1 argument, 4 provided
+/usr/include/opencv2/core/mat.hpp:104:8: note: cv::Mat::Mat(int, const int*, int, const Scalar&)
+ inline Mat::Mat(int _dims, const int* _sz, int _type, const Scalar& _s) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:104:8: note:   no known conversion for argument 4 from ‘std::vector<float>’ to ‘const Scalar& {aka const cv::Scalar_<double>&}’
+/usr/include/opencv2/core/mat.hpp:98:8: note: cv::Mat::Mat(int, const int*, int)
+ inline Mat::Mat(int _dims, const int* _sz, int _type) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:98:8: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:91:8: note: cv::Mat::Mat(cv::Size, int, const Scalar&)
+ inline Mat::Mat(Size _sz, int _type, const Scalar& _s) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:91:8: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:78:8: note: cv::Mat::Mat(int, int, int, const Scalar&)
+ inline Mat::Mat(int _rows, int _cols, int _type, const Scalar& _s) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:78:8: note:   no known conversion for argument 4 from ‘std::vector<float>’ to ‘const Scalar& {aka const cv::Scalar_<double>&}’
+/usr/include/opencv2/core/mat.hpp:85:8: note: cv::Mat::Mat(cv::Size, int)
+ inline Mat::Mat(Size _sz, int _type) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:85:8: note:   candidate expects 2 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:72:8: note: cv::Mat::Mat(int, int, int)
+ inline Mat::Mat(int _rows, int _cols, int _type) : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:72:8: note:   candidate expects 3 arguments, 4 provided
+/usr/include/opencv2/core/mat.hpp:67:8: note: cv::Mat::Mat()
+ inline Mat::Mat() : size(&rows)
+        ^
+/usr/include/opencv2/core/mat.hpp:67:8: note:   candidate expects 0 arguments, 4 provided
+make: *** [test] Error 1
