@@ -15,9 +15,10 @@
 #include <vector>
 #include <iostream>
 #include "fast5/nanopolish_fast5_loader.h"
+#include "fast5/nanopolish_fast5_loader.cpp"
 #include <fstream>
 #include <string>
-
+#include "fast5/hjorth_params.cpp"
 int main()
 {
     std::vector<std::string> m_fast5s;
@@ -44,23 +45,26 @@ int main()
         for(size_t j = 0; j < reads.size(); j++) {
             // groups have names like "read_<uuid>"
             // we're only interested in the uuid bit
-            assert(reads[j].find("read_") == 0);
+            hjorth_params H;
+	    assert(reads[j].find("read_") == 0);
             std::string read_name = reads[j].substr(5);
             Fast5Data data;
             data.is_valid = true;
             data.read_name = read_name;
 
             // metadata
-            data.sequencing_kit = fast5_get_sequencing_kit(f5_file, read_name);
-            data.experiment_type = fast5_get_experiment_type(f5_file, read_name);
+            //data.sequencing_kit = fast5_get_sequencing_kit(f5_file, read_name);
+            //data.experiment_type = fast5_get_experiment_type(f5_file, read_name);
 
             // raw data
             data.channel_params = fast5_get_channel_params(f5_file, read_name);
             data.rt = fast5_get_raw_samples(f5_file, read_name, data.channel_params);
-            data.start_time = fast5_get_start_time(f5_file, read_name);
-            for(std::uint32_t i=0;i<data.rt.n;i++)
-               std::cout<<data.rt.raw[i]<<"\n";
-            fast5_data.push_back(data);
+            //data.start_time = fast5_get_start_time(f5_file, read_name);
+            //for(std::uint32_t i=0;i<data.rt.n;i++)
+            //   std::cout<<data.rt.raw[i]<<"\n";
+            H.calc_hjorth(data.rt);
+	    std::cout<<H.A<<","<<H.M<<","<<H.C<<"\n";
+            //fast5_data.push_back(data);
         }
 
         fast5_close(f5_file);
@@ -69,7 +73,7 @@ int main()
         // destroy fast5 data
         for(size_t j = 0; j < fast5_data.size(); ++j) {
             free(fast5_data[j].rt.raw);
-            fast5_data[j].rt.raw = NULL;
+            //fast5_data[j].rt.raw = NULL;
         }
         fast5_data.clear();
     }

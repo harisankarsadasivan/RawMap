@@ -8,8 +8,10 @@
 //
 #include <omp.h>
 #include "nanopolish_fast5_loader.h"
+#include <math.h>
 
-//
+
+
 Fast5Loader::Fast5Loader()
 {
 
@@ -37,14 +39,14 @@ Fast5Data Fast5Loader::load_read(const std::string& filename, const std::string&
     data.is_valid = true;
 
     // metadata
-    data.sequencing_kit = fast5_get_sequencing_kit(f5_file, read_name);
-    data.experiment_type = fast5_get_experiment_type(f5_file, read_name);
+    //data.sequencing_kit = fast5_get_sequencing_kit(f5_file, read_name);
+    //data.experiment_type = fast5_get_experiment_type(f5_file, read_name);
 
     // raw data
     data.channel_params = fast5_get_channel_params(f5_file, read_name);
     data.rt = fast5_get_raw_samples(f5_file, read_name, data.channel_params);
 
-    data.start_time = fast5_get_start_time(f5_file, read_name);
+    //data.start_time = fast5_get_start_time(f5_file, read_name);
     fast5_close(f5_file);
 
     return data;
