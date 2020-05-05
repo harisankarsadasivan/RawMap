@@ -1,9 +1,15 @@
 #include "hjorth_params.h"
 #include<iostream>
+#define CHUNK 6000
+#define HEAD 2000
+#define TAIL 1000
+#define ENDBP HEAD+CHUNK
+#define MIN_LEN CHUNK+HEAD+TAIL
+
 void hjorth_params::calc_hjorth(raw_table &rt)
 {
         std::vector<float> Y,dY;
-        for(std::uint32_t i=0;i<rt.n;i++){
+        for(std::uint32_t i=HEAD;i<ENDBP;i++){
          Y.push_back(rt.raw[i]);
         }
         float var_Y,mob_Y;

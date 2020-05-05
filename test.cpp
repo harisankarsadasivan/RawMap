@@ -18,11 +18,9 @@
 #include <string>
 #include "fast5/hjorth_params.cpp"
 #include "svm/svm.cpp"
-int main()
-{
-    mySVM s;
+void load_data(mySVM &s,std::string fn,int label){
+
     std::vector<std::string> m_fast5s;
-    std::string fn ="fast5_filename.txt";
     std::ifstream f(fn);
     std::string line;
     while(!f.eof()){
@@ -38,13 +36,10 @@ int main()
             continue;
         }
 
-        //std::vector<Fast5Data> fast5_data;
 
         std::vector<std::string> reads = fast5_get_multi_read_groups(f5_file);
         
         for(size_t j = 0; j < reads.size(); j++) {
-            // groups have names like "read_<uuid>"
-            // we're only interested in the uuid bit
             hjorth_params H;
 	    assert(reads[j].find("read_") == 0);
             std::string read_name = reads[j].substr(5);
@@ -52,34 +47,32 @@ int main()
             data.is_valid = true;
             data.read_name = read_name;
 
-            // metadata
-            //data.sequencing_kit = fast5_get_sequencing_kit(f5_file, read_name);
-            //data.experiment_type = fast5_get_experiment_type(f5_file, read_name);
 
             // raw data
             data.channel_params = fast5_get_channel_params(f5_file, read_name);
             data.rt = fast5_get_raw_samples(f5_file, read_name, data.channel_params);
-            //data.start_time = fast5_get_start_time(f5_file, read_name);
-            //for(std::uint32_t i=0;i<data.rt.n;i++)
-            //   std::cout<<data.rt.raw[i]<<"\n";
+            if(data.rt.n < MIN_LEN) continue;
             H.calc_hjorth(data.rt);
-	    std::cout<<H.A<<","<<H.M<<","<<H.C<<"\n";
-            s.push_data(H,-1);
-            //fast5_data.push_back(data);
+            s.push_data(H,label);
         }
 
         fast5_close(f5_file);
-
-
-        //// destroy fast5 data
-        //for(size_t j = 0; j < fast5_data.size(); ++j) {
-        //    free(fast5_data[j].rt.raw);
-        //    //fast5_data[j].rt.raw = NULL;
-        //}
-        //fast5_data.clear();
-
     }
 
-        s.train_SVM();
+}
+int main(int argc,char *argv[])
+{
+    mySVM s;
+    std::uint16_t no;
+    std::cout<<"LOADING TARGET READS.........................\n";
+    load_data(s,argv[1],1);
+    no=s.samples.size();
+    std::cout<<"DONE loading\t"<<no<< "valid target reads"<<"\n";
+      
+    std::cout<<"LOADING NON_TARGET READ......................\n";
+    load_data(s,argv[2],-1);
+
+    std::cout<<"DONE loading\t"<<s.samples.size()-no<< "valid non-target reads"<<"\n";
+    s.train_SVM();
 return 0;
 }
