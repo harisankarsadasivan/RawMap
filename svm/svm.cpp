@@ -12,13 +12,27 @@ randomize_samples(samples, labels);
 const double max_nu = maximum_nu(labels);
 svm_nu_trainer<kernel_type> trainer;
 cout<<" doing cross validation"<<endl;
-for(double gamma=0.0001;gamma<=1;gamma*=5)
-	for(double nu=0.00001;nu<max_nu;nu*=5){
+matrix<double> result,max;
+double best_gamma=0,best_nu=0;
+//for(double gamma=0.00001;gamma<=1;gamma*=5)
+double gamma=0.00001;
+	for(double nu=0.00001;nu<max_nu;nu+=0.00005){
 		trainer.set_kernel(kernel_type(gamma));
 		trainer.set_nu(nu);
-		cout<<"gamma:"<<gamma<<"nu:"<<nu<<endl;
-		cout<<"cross validation: TP and TN rates: "<<cross_validate_trainer(trainer,samples,labels,3);
+		cout<<"gamma:"<<gamma<<"nu:"<<nu<<"accuracy"<<mean(max)<<endl;
+                result=cross_validate_trainer(trainer,samples,labels,3);
+                if(gamma==0.00001 && nu==0.00001)                
+			max=result;
+		cout<<"cross validation: TP and TN rates: "<<result;
+                
+		if(mean(result)>mean(max) && min(result) > min(max)){
+			max=result;
+			best_gamma=gamma;
+			best_nu=nu;
+		}
+		 
 	}
+cout<<"Best gamma:"<<best_gamma<<", Best nu:"<<best_nu<<max<<endl;
 
 //better otpimization[DEFAULT]
 #else
@@ -31,7 +45,7 @@ typedef radial_basis_kernel<sample_type> kernel_type;
         trainer.set_c_class2(c2);
 matrix<double> result = cross_validate_trainer(trainer, samples, labels, 10);
         cout << "gamma: " << setw(11) << gamma << "  c1: " << setw(11) << c1 <<  "  c2: " << setw(11) << c2 <<  "  cross validation accuracy: " << result;
-return mean(result);
+return 2*prod(result)/sum(result);
     };
 auto result = find_max_global(cross_validation_score, 
                                   {1e-5, 1e-5, 1e-5},  // lower bound constraints on gamma, c1, and c2, respectively

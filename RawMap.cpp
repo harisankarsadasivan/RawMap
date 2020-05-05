@@ -64,12 +64,13 @@ int main(int argc,char *argv[])
 {
     mySVM s;
     std::uint16_t no;
-    std::cout<<"LOADING TARGET READS.........................\n";
+    std::cout<<"##TRAINING MODE\n";
+    std::cout<<"#LOADING TARGET READS.........................\n";
     load_data(s,argv[1],1);
     no=s.samples.size();
     std::cout<<"DONE loading\t"<<no<< "valid target reads"<<"\n";
       
-    std::cout<<"LOADING NON_TARGET READ......................\n";
+    std::cout<<"#LOADING NON_TARGET READ......................\n";
     load_data(s,argv[2],-1);
 
     std::cout<<"DONE loading\t"<<s.samples.size()-no<< "valid non-target reads"<<"\n";
