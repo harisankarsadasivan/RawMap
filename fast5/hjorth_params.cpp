@@ -7,6 +7,7 @@
 #define TAIL 1000
 #define ENDBP HEAD+CHUNK
 #define MIN_LEN CHUNK+HEAD+TAIL
+#define MARGIN 7
 void hjorth_params::clean_sig(std::vector<float> &Z, std::vector<float> &Y)
 {
 	size_t size=Z.size();
@@ -34,8 +35,8 @@ void hjorth_params::clean_sig(std::vector<float> &Z, std::vector<float> &Y)
 	//std::cout<<std::endl<<"median"<<MED<<std::endl;
 
 	//std::cout<<"mad"<<MAD<<std::endl;
-	low=MED-5*MAD; 
-	hi=MED+5*MAD;
+	low=MED-MARGIN*MAD; 
+	hi=MED+MARGIN*MAD;
 	std::uint16_t k=0;
 
 	//std::cout<<"Clean series:  ";
@@ -62,8 +63,10 @@ void hjorth_params::calc_hjorth(raw_table &rt)
 {
  	std::vector<float> Y,dY,Z;
         for(std::uint32_t i=0;i<ENDBP+TAIL;i++){
+        //for(std::uint32_t i=0;i<rt.n;i++){
          Z.push_back(rt.raw[i]);
         }
+	rt.raw=NULL;
 	hjorth_params::clean_sig(Z,Y);
 	Z.clear();
 	
@@ -99,11 +102,22 @@ for(std::uint32_t i=0;i<Y.size()-1;i++)
 
 //variance
 float hjorth_params::variance(std::vector<float> &x){
+
 float M=0,var=0;
 std::uint16_t N= x.size();
+#ifndef MED_VAR
 for(std::uint32_t i=0;i<N;i++)
         M+=x[i];
+
 M=M/N;
+#else
+
+std::vector<float> Z1=x;
+std::sort(Z1.begin(),Z1.end());
+if(N%2==0) M=0.5*(Z1[N/2-1]+Z1[N/2]);
+else M=Z1[0.5*N];
+Z1.clear();
+#endif
 
 for(std::uint32_t i=0;i<N;i++)
         var+=pow((x[i]-M),2);

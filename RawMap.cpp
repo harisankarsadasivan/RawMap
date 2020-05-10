@@ -80,7 +80,7 @@ int main(int argc,char *argv[])
     std::cout<<"DONE loading\t"<<no<< "valid target reads"<<"\n";
     std::cout<<"\n$$$$$$$$$$$$$$$$$$$$$$$$\n";
     std::cout<<"#LOADING NON_TARGET READ......................\n";
-    load_data(s,argv[3],-1);
+    load_data(s,argv[3],0);
 
     std::cout<<"DONE loading\t"<<s.data.size()-no<< "valid non-target reads"<<"\n";
     s.train_SVM();}
@@ -93,11 +93,11 @@ int main(int argc,char *argv[])
     std::cout<<"DONE loading\t"<<no<< "valid target reads"<<"\n";
       
     std::cout<<"#LOADING NON_TARGET READ......................\n";
-    load_data(s,argv[3],-1);
+    load_data(s,argv[3],0);
 
     std::cout<<"DONE loading\t"<<s.data.size()-no<< "valid non-target reads"<<"\n";
     s.test_SVM();
-
+    
     }
     else{
     cout<<"ERROR in input format\n";

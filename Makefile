@@ -1,11 +1,10 @@
 CC = g++
-CFLAGS = -Wall -std=c++11 -O3 -DSIMPLE_OPT
-SRCS = RawMap.cpp svm/svm.cpp
+CFLAGS = -Wall -std=c++11 -O3 -DUSE_OPENCV_GRID_SEARCH_AUTOTRAIN -DMED_VAR
+SRCS = RawMap.cpp
 PROG = RawMap
-#OPENCV = `pkg-config opencv --cflags --libs`
-LIBS = -lz -lm -lstdc++ -ldl -lhdf5 -I/home/hariss/hari/RawMap/dlib-19.19 /home/hariss/hari/RawMap/dlib-19.19/dlib/all/source.cpp -lpthread -lX11
+LIBS = -lz -lm -lstdc++ -ldl -lhdf5  -I/usr/include/opencv `pkg-config opencv --cflags --libs`
 
 $(PROG):$(SRCS)
-	$(CC) $(CFLAGS) -o $(PROG) $(SRCS) $(LIBS) $(INC)
+	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
 clean:
 	-rm $(PROG)
