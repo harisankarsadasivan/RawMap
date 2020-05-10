@@ -6,6 +6,9 @@ Training:
 
 Adapted:
 fast5/, used for rawdata extraction, is a modified subset of  files originally from https://github.com/jts/nanopolish
-Dependencies:
-dlib: http://dlib.net/svm_ex.cpp.html
+
+Dependencies: (pre-installed on mbit1)
+OpenCV
 libhdf5
+
+Note: compile flags in makefile needs to be re-ordered to make this work in macos.
