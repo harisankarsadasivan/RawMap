@@ -17,7 +17,7 @@
 #include <fstream>
 #include <string>
 #include "fast5/hjorth_params.cpp"
-#include "svm/svm.cpp"
+#include "svm/mysvm.cpp"
 void load_data(mySVM &s,std::string fn,int label){
 
     std::vector<std::string> m_fast5s;
@@ -51,9 +51,16 @@ void load_data(mySVM &s,std::string fn,int label){
             // raw data
             data.channel_params = fast5_get_channel_params(f5_file, read_name);
             data.rt = fast5_get_raw_samples(f5_file, read_name, data.channel_params);
-            if(data.rt.n < MIN_LEN) continue;
+            if(data.rt.n < MIN_LEN+TAIL) continue;
             H.calc_hjorth(data.rt);
-            s.push_data(H,label);
+	//    for(int i=0;i<data.rt.n;i++)
+	//	cout<<data.rt.raw[i]<<",";
+            //cout<<endl;
+            if(H.valid_data)
+	     s.push_data(H,label);
+	   // for(int l=0;l<H.features.size();l++)
+           // 		cout<<H.features[l]<<",";
+	   // cout<<endl;
         }
 
         fast5_close(f5_file);
@@ -64,16 +71,37 @@ int main(int argc,char *argv[])
 {
     mySVM s;
     std::uint16_t no;
+    std::string s1(argv[1]);
+    if(s1.compare("train")==0){
     std::cout<<"##TRAINING MODE\n";
     std::cout<<"#LOADING TARGET READS.........................\n";
-    load_data(s,argv[1],1);
-    no=s.samples.size();
+    load_data(s,argv[2],1);
+    no=s.data.size();
+    std::cout<<"DONE loading\t"<<no<< "valid target reads"<<"\n";
+    std::cout<<"\n$$$$$$$$$$$$$$$$$$$$$$$$\n";
+    std::cout<<"#LOADING NON_TARGET READ......................\n";
+    load_data(s,argv[3],-1);
+
+    std::cout<<"DONE loading\t"<<s.data.size()-no<< "valid non-target reads"<<"\n";
+    s.train_SVM();}
+    else if(s1.compare("test")==0){
+
+    std::cout<<"##TESTING MODE\n";
+    std::cout<<"#LOADING TARGET READS.........................\n";
+    load_data(s,argv[2],1);
+    no=s.data.size();
     std::cout<<"DONE loading\t"<<no<< "valid target reads"<<"\n";
       
     std::cout<<"#LOADING NON_TARGET READ......................\n";
-    load_data(s,argv[2],-1);
+    load_data(s,argv[3],-1);
 
-    std::cout<<"DONE loading\t"<<s.samples.size()-no<< "valid non-target reads"<<"\n";
-    s.train_SVM();
+    std::cout<<"DONE loading\t"<<s.data.size()-no<< "valid non-target reads"<<"\n";
+    s.test_SVM();
+
+    }
+    else{
+    cout<<"ERROR in input format\n";
+    exit(1);
+    }
 return 0;
 }
