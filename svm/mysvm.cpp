@@ -81,7 +81,7 @@ void mySVM::test_SVM(){
         {
             printf( "\tClass (digit %d) false postives 	%d (%g%%)\n", i,
                     false_positives[i],
-                    (double) false_positives[i]*100/mySVM::data_size);
+                    (double) false_positives[i]*100/std::count(labels.begin(),labels.end(),i));
         }
 
  }
@@ -100,7 +100,7 @@ void mySVM::train_SVM(){
                                  CvSVM::C_SVC,   // Type of SVM, here N classes (see manual)
                                  CvSVM::RBF,  // kernel type (see manual)
                                  0.0,			// kernel parameter (degree) for poly kernel only
-                                 0.33333,			// kernel parameter (gamma) for poly/rbf kernel only
+                                 1.0/3.0,			// kernel parameter (gamma) for poly/rbf kernel only
                                  0.0,			// kernel parameter (coef0) for poly/sigmoid kernel only
                                  10,				// SVM optimization parameter C
                                  0,				// SVM optimization parameter nu (not used for N classe SVM)

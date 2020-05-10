@@ -8,7 +8,7 @@
 #include <cv.h>
 #include <ml.h>
 #include <stdio.h>
-
+#include <algorithm>
 using namespace cv;
 using namespace std;
 #include "../fast5/hjorth_params.h"
