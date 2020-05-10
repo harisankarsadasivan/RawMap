@@ -2,12 +2,7 @@
 #include<iostream>
 #include <algorithm>
 #include <math.h>
-#define CHUNK 6000
-#define HEAD 2000
-#define TAIL 1000
-#define ENDBP HEAD+CHUNK
-#define MIN_LEN CHUNK+HEAD+TAIL
-#define MARGIN 7
+#include "../defines.h"
 void hjorth_params::clean_sig(std::vector<float> &Z, std::vector<float> &Y)
 {
 	size_t size=Z.size();
