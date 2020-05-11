@@ -3,8 +3,8 @@
 </p>
 
 
-**Compile and build**:
-make -j 4;
+**Compile and build**:  
+make -j <no_of_threads>;
 
 **Training**:
 ``````
