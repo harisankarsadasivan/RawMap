@@ -1,4 +1,6 @@
-![GitHub Logo](logo.png)
+<p align="center">
+  ![GitHub Logo](logo.png)
+</p>
 
 
 # RawMap
