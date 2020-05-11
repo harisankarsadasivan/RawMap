@@ -1,5 +1,5 @@
 <p align="center">
-  <logo.png>
+  <logo.png />
 </p>
 
 # RawMap
