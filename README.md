@@ -36,14 +36,14 @@ ________________________________________________________________________________
 ```````
 **INTERNAL:::Repo links on mbit1.eecs.umich.edu**  
 
-Minimap classified reads,svm modelname: c_model.data
-separate zymo and hela runs: /y/hariss/FAST5/FAST5
-99:1: /y/hariss/FAST5/99-1
-50:50: /y/hariss/FAST5/50:50
-zymo community split into two sub-communities of 5 species each: /z/scratch1/hariss/FAST5/split
+Minimap classified reads,svm modelname: c_model.data  
+separate zymo and hela runs: /y/hariss/FAST5/FAST5  
+99:1: /y/hariss/FAST5/99-1  
+50:50: /y/hariss/FAST5/50:50  
+zymo community split into two sub-communities of 5 species each: /z/scratch1/hariss/FAST5/split  
 
-Minimap unclassified reads, model name: uc_model.data
-separate zymo and hela: /z/scratch1/hariss/FAST5/
+Minimap unclassified reads, model name: uc_model.data  
+separate zymo and hela: /z/scratch1/hariss/FAST5/  
 
 
 
