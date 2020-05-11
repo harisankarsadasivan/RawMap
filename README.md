@@ -14,7 +14,8 @@ make -j <no_of_threads>;
 ``````
 >./RawMap train <file_list_to_target_reads> <file_list_to_non-target_reads>
 ```````
-Model is saved to model.data by default after training.  
+Command to generate filelist: find <repo_path> type -f | shuf > <file_list>  
+Model is saved to model.data by default after training.   
 **Testing**:
 ```````
 >./RawMap test <file_list_to_target_reads> <file_list_to_non-target_reads> <model.data file name>
@@ -40,7 +41,7 @@ ________________________________________________________________________________
 ```````
 **Repo links on mbit1.eecs.umich.edu**  
 
-Minimap classified reads  
+**Minimap classified reads**  
 separate zymo and hela runs: /y/hariss/FAST5/FAST5 (**To test load c_model.data**  )   
 99:1:  
 /y/hariss/FAST5/99-1/c/h  
@@ -50,7 +51,7 @@ separate zymo and hela runs: /y/hariss/FAST5/FAST5 (**To test load c_model.data*
 /y/hariss/FAST5/50-50/c/z  
 
 
-Minimap unclassified reads (**To test load uc_model.data**)
+**Minimap unclassified reads (**To test load uc_model.data**)**
 separate zymo and hela:   
 /z/scratch1/hariss/FAST5/hela/uc/      
 /z/scratch1/hariss/FAST5/zymo/uc/  
