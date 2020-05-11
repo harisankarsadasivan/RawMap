@@ -1,5 +1,6 @@
-<div style="text-align:center"><img src="logo.png" /></div>
-
+<p align="center">
+  <logo.png>
+</p>
 
 # RawMap
 usage:
