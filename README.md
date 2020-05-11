@@ -34,7 +34,7 @@ compile flags in makefile needs to be re-ordered to make this work.
 ```````
 __________________________________________________________________________________________________________________
 ```````
-**Repo links on mbit1.eecs.umich.edu**  
+**INTERNAL:::Repo links on mbit1.eecs.umich.edu**  
 
 Minimap classified reads,svm modelname: c_model.data
 separate zymo and hela runs: /y/hariss/FAST5/FAST5
