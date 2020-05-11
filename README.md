@@ -7,11 +7,13 @@
 make -j 4;
 
 **Training:**
+``````
 ./RawMap train <file_list_to_target_reads> <file_list_to_non-target_reads>
-
+```
 **Testing:**
+```
 ./RawMap test <file_list_to_target_reads> <file_list_to_non-target_reads> <model.data file name>
-
+```
 
 **Output**:
 Will result in accuracy, true positive and true negative rates.
