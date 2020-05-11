@@ -10,10 +10,14 @@ make -j 4;
 ./RawMap train <file_list_to_target_reads> <file_list_to_non-target_reads>
 
 **Testing:**
-./RawMap test <file_list_to_target_reads> <file_list_to_non-target_reads>
+./RawMap test <file_list_to_target_reads> <file_list_to_non-target_reads> <model.data file name>
+
+
+**Output**:
+Will result in accuracy, true positive and true negative rates.
 
 **Dependencies: (pre-installed on mbit1)**
-OpenCV version 2.4.5 (2.4.5) for CentOS
+OpenCV version 2.4.5 (2.4.5) for CentOS, 
 libhdf5
 
 Adapted:
