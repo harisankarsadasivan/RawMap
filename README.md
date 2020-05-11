@@ -20,7 +20,7 @@ Model is saved to model.data by default after training.
 Will result in accuracy, true positive and true negative rates.
 
 **Dependencies: (pre-installed on mbit1)**
-OpenCV version 2.4.5 (2.4.5) for CentOS, 
+Tested on OpenCV version 2.4.5 (2.4.5) for CentOS, 
 libhdf5,[HDF5](https://www.hdfgroup.org/downloads/hdf5/) must be installed. 
 
 
@@ -28,4 +28,4 @@ Libraries adapted:
 fast5/, used for rawdata extraction, is a modified subset of  files originally from https://github.com/jts/nanopolish
 
 
-Note: compile flags in makefile needs to be re-ordered to make this work in macos.
+MacOS: compile flags in makefile needs to be re-ordered to make this work.
