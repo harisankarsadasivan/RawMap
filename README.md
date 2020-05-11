@@ -3,10 +3,10 @@
 </p>
 
 
-#**Compile and build:**
+##**Compile and build:**
 make -j 4;
 
-#**Training:**
+##Training:
 ``````
 >./RawMap train <file_list_to_target_reads> <file_list_to_non-target_reads>
 ```````
