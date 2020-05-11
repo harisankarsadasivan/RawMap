@@ -16,6 +16,7 @@ void mySVM::load_model(CvSVM* mysvm,char *argv[]){
 	cvReleaseFileStorage(&fs);
 }
 void mySVM::test_SVM(char *argv[]){
+        mySVM::trim_data();
 	mySVM::data_size=mySVM::data.size();
         CvSVM* mysvm = new CvSVM;
  	mySVM::load_model(mysvm,argv);
@@ -86,6 +87,7 @@ void mySVM::test_SVM(char *argv[]){
 
  }
 void mySVM::train_SVM(){
+    mySVM::trim_data();
     mySVM::data_size=mySVM::data.size();
     printf ("OpenCV version %s (%d.%d.%d)\n",CV_VERSION,CV_MAJOR_VERSION, CV_MINOR_VERSION, CV_SUBMINOR_VERSION);
 	Mat training_data = Mat(mySVM::data_size, N, CV_32FC1);
@@ -150,3 +152,21 @@ void mySVM::push_data(hjorth_params &H, int lab){
 data.push_back(H.features);
 labels.push_back(lab);
 }
+
+void mySVM::trim_data(){
+        std::uint16_t label1,label0;
+        label1=std::count(labels.begin(),labels.end(),1.0);
+        label0=std::count(labels.begin(),labels.end(),0.0);
+        if(label1>label0){
+        data.erase(data.begin(),data.begin()+label1-label0);
+        labels.erase(labels.begin(),labels.begin()+label1-label0);
+        }
+        else if(label1<label0){
+
+        labels.erase(labels.begin()+label1,labels.begin()+label0);
+        data.erase(data.begin()+label1,data.begin()+label0);
+        }
+cout<<"Trimmmed data size: "<<data.size()<<"\n";
+
+}
+

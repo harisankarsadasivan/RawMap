@@ -36,4 +36,5 @@ void test_SVM(char *argv[]);
 void save_model(CvSVM* mysvm);
 void load_model(CvSVM* mySVM,char *argv[]);
 void clean_sig();
+void trim_data();
 };
