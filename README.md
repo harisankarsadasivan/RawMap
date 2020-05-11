@@ -51,9 +51,9 @@ separate zymo and hela runs: /y/hariss/FAST5/FAST5 (To test load c_model.data  )
 
 
 Minimap unclassified reads (To test load uc_model.data  )
-separate zymo and hela: 
-/z/scratch1/hariss/FAST5/hela/uc/    
-/z/scratch1/hariss/FAST5/zymo/uc/
+separate zymo and hela:   
+/z/scratch1/hariss/FAST5/hela/uc/      
+/z/scratch1/hariss/FAST5/zymo/uc/  
 
 Zymo sub-communities: (TBD):  
 zymo community split into two sub-communities of 5 species each: /z/scratch1/hariss/FAST5/split    
