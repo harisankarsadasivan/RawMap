@@ -34,7 +34,7 @@ compile flags in makefile needs to be re-ordered to make this work.
 ```````
 __________________________________________________________________________________________________________________
 ```````
-**INTERNAL:::Repo links on mbit1.eecs.umich.edu**  
+**Repo links on mbit1.eecs.umich.edu**  
 
 Minimap classified reads (To test load c_model.data  )  
 separate zymo and hela runs: /y/hariss/FAST5/FAST5  
@@ -48,4 +48,6 @@ separate zymo and hela: /z/scratch1/hariss/FAST5/
 Zymo sub-communities: (TBD):  
 zymo community split into two sub-communities of 5 species each: /z/scratch1/hariss/FAST5/split    
 
-
+**Training model tuning**    
+For the best results, a model needs to be trained for each flowcell.  
+View train.sh for picking the right model.  
