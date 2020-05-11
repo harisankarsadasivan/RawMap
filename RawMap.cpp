@@ -96,7 +96,7 @@ int main(int argc,char *argv[])
     load_data(s,argv[3],0);
 
     std::cout<<"DONE loading\t"<<s.data.size()-no<< "valid non-target reads"<<"\n";
-    s.test_SVM();
+    s.test_SVM(argv);
     
     }
     else{

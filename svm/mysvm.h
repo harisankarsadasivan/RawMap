@@ -32,8 +32,8 @@ std::vector<float> labels;
 
 void push_data(hjorth_params &H,int lab);
 void train_SVM();
-void test_SVM();
+void test_SVM(char *argv[]);
 void save_model(CvSVM* mysvm);
-void load_model(CvSVM* mySVM);
+void load_model(CvSVM* mySVM,char *argv[]);
 void clean_sig();
 };

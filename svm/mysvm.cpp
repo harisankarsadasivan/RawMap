@@ -9,16 +9,16 @@ void mySVM::save_model(CvSVM* mysvm){
 	cvReleaseFileStorage(&fs);
 	cout<<"Model file created"<<endl;
 }
-void mySVM::load_model(CvSVM* mysvm){
+void mySVM::load_model(CvSVM* mysvm,char *argv[]){
 
-	CvFileStorage* fs = cvOpenFileStorage("model.data", 0, CV_STORAGE_READ);
+	CvFileStorage* fs = cvOpenFileStorage(argv[4], 0, CV_STORAGE_READ);
 	mysvm->read(fs,cvGetFileNodeByName(fs,0,"mysvm"));
 	cvReleaseFileStorage(&fs);
 }
-void mySVM::test_SVM(){
+void mySVM::test_SVM(char *argv[]){
 	mySVM::data_size=mySVM::data.size();
         CvSVM* mysvm = new CvSVM;
- 	mySVM::load_model(mysvm);
+ 	mySVM::load_model(mysvm,argv);
 
         Mat test_sample;
         int correct_class = 0;
@@ -47,7 +47,7 @@ void mySVM::test_SVM(){
 
             result = mysvm->predict(test_sample);
 
-            printf("Testing Sample %i -> class result (digit %f)\n", tsample, result);
+            printf("Testing Sample %i -> class result (label %f)\n", tsample, result);
 
             // if the prediction and the (true) testing classification are the same
             // (N.B. openCV uses a floating point implementation!)
@@ -79,7 +79,7 @@ void mySVM::test_SVM(){
 
         for (int i = 0; i < 2; i++)
         {
-            printf( "\tClass (digit %d) false postives 	%d (%g%%)\n", i,
+            printf( "\tClass (label %d) false postives 	%d (%g%%)\n", i,
                     false_positives[i],
                     (double) false_positives[i]*100/std::count(labels.begin(),labels.end(),i));
         }
@@ -96,6 +96,7 @@ void mySVM::train_SVM(){
 		}
 		training_classifications.at<float>(i,0)= mySVM::labels[i];
 	}
+	
         CvSVMParams params = CvSVMParams(
                                  CvSVM::C_SVC,   // Type of SVM, here N classes (see manual)
                                  CvSVM::RBF,  // kernel type (see manual)
