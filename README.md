@@ -1,4 +1,4 @@
-![GitHub Logo](/images/logo.png)
+![GitHub Logo](logo.png)
 Format: ![Alt Text](url)
 
 # RawMap
