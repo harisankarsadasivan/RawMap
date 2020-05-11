@@ -10,7 +10,7 @@ make -j 4;
 ``````
 >./RawMap train <file_list_to_target_reads> <file_list_to_non-target_reads>
 ```````
-Model is saved to model.data by default after training
+Model is saved to model.data by default after training.  
 **Testing**:
 ```````
 >./RawMap test <file_list_to_target_reads> <file_list_to_non-target_reads> <model.data file name>
