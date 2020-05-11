@@ -2,6 +2,10 @@
 <img src="logo.png">
 </p>
 
+**RawMap operates in 3 stages.**
+1. FAST5 data extraction and channel normalization followed by MED-MAD scaling to remove any outliers outside 5*MAD:  
+2. Modified Hjorth parameter extraction (using MAD instead of STD_DEV)  
+3. C_SVC SVM classifier with RBF kernel.  
 
 **Compile and build**:  
 make -j <no_of_threads>;
