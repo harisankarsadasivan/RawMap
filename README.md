@@ -41,7 +41,7 @@ ________________________________________________________________________________
 **Repo links on mbit1.eecs.umich.edu**  
 
 Minimap classified reads  
-separate zymo and hela runs: /y/hariss/FAST5/FAST5 (To test load c_model.data  )   
+separate zymo and hela runs: /y/hariss/FAST5/FAST5 (**To test load c_model.data**  )   
 99:1:  
 /y/hariss/FAST5/99-1/c/h  
 /y/hariss/FAST5/99-1/c/z  
@@ -50,7 +50,7 @@ separate zymo and hela runs: /y/hariss/FAST5/FAST5 (To test load c_model.data  )
 /y/hariss/FAST5/50-50/c/z  
 
 
-Minimap unclassified reads (To test load uc_model.data  )
+Minimap unclassified reads (**To test load uc_model.data  **)
 separate zymo and hela:   
 /z/scratch1/hariss/FAST5/hela/uc/      
 /z/scratch1/hariss/FAST5/zymo/uc/  
