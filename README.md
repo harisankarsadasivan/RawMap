@@ -1,7 +1,7 @@
 <p align="center"> 
 <img src="logo.png">
 </p>
-**What is RawMap?**    
+**RawMap**      
 RawMap is a direct squiggle-space metagenomic classifier for filtering non-targeted reads. Inspired from brain EEG characterization, RawMap uses a Support Vector Machine (SVM) with an RBF kernel, which is trained to capture the non-linear and non-stationary characteristics of the nanopore squiggles. Each normalized squiggle segment y corresponding to  450 basepairs of a read is mapped to a 3-D feature space. Features are derived from a modified version of Hjorth parameters, where the mean and standard deviation are replaced with median and median absolute deviation respectively. RawMap has two SVM models, one trained on fast and other on slow moving reads.  
 **RawMap operates in 3 stages.**
 1. FAST5 data extraction and channel normalization followed by MED-MAD scaling to remove any outliers outside 5*MAD:  
