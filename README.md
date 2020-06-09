@@ -1,6 +1,9 @@
 <p align="center"> 
 <img src="logo.png">
 </p>  
+MIT License
+
+Copyright (c) 2020 harisankarsadasivan
 
 **Description**   
 Please refer ONT London Calling poster: <to be updated> .  
