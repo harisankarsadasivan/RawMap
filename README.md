@@ -48,14 +48,10 @@ ________________________________________________________________________________
 ```````
 **Datasets available at https://doi.org/10.5281/zenodo.7349378**  
 
-**Minimap classified reads**  
-separate zymo and hela runs:(**To test load c_model.data**  )   
-
-**Minimap unclassified reads (**To test load uc_model.data**)**
-separate zymo and hela:   
-
-Zymo subsets (species-agnostic classification):  
+**Model files provided**
+c_model.data: Trained on Minimap2 classified reads.
+uc_model.data: Trained on Minimap2 unclassified reads.
 
 **Training model tuning**    
-For the best results, a model needs to be trained for each flowcell.  
+For the best results, a model needs to be trained for each wet-lab protocol.  
 View train.sh for picking the right model.  
