@@ -46,25 +46,15 @@ compile flags in makefile needs to be re-ordered to make this work.
 ```````
 __________________________________________________________________________________________________________________
 ```````
-**Repo links on mbit1.eecs.umich.edu**  
+**Datasets available at https://doi.org/10.5281/zenodo.7349378**  
 
 **Minimap classified reads**  
-separate zymo and hela runs: /y/hariss/FAST5/FAST5 (**To test load c_model.data**  )   
-99:1:  
-/y/hariss/FAST5/99-1/c/h  
-/y/hariss/FAST5/99-1/c/z  
-50:50:  
-/y/hariss/FAST5/50-50/c/h,  
-/y/hariss/FAST5/50-50/c/z  
-
+separate zymo and hela runs:(**To test load c_model.data**  )   
 
 **Minimap unclassified reads (**To test load uc_model.data**)**
 separate zymo and hela:   
-/z/scratch1/hariss/FAST5/hela/uc/      
-/z/scratch1/hariss/FAST5/zymo/uc/  
 
-Zymo sub-communities: (TBD):  
-zymo community split into two sub-communities of 5 species each: /z/scratch1/hariss/FAST5/split    
+Zymo subsets (species-agnostic classification):  
 
 **Training model tuning**    
 For the best results, a model needs to be trained for each flowcell.  
