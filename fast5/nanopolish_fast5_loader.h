@@ -27,28 +27,28 @@ struct Fast5Data
     //uint64_t start_time;
 };
 
-class Fast5Loader
-{
-    public:
+// class Fast5Loader
+// {
+//     public:
 
-        static Fast5Data load_read(const std::string& filename, const std::string& read_name);
-        // destructor
-        ~Fast5Loader();
+//         static Fast5Data load_read(const std::string& filename, const std::string& read_name);
+//         // destructor
+//         ~Fast5Loader();
 
-    private:
+//     private:
 
-        // singleton accessor function
-        static Fast5Loader& getInstance()
-        {
-            static Fast5Loader instance;
-            return instance;
-        }
+//         // singleton accessor function
+//         static Fast5Loader& getInstance()
+//         {
+//             static Fast5Loader instance;
+//             return instance;
+//         }
 
-        Fast5Loader();
+//         Fast5Loader();
 
-        // do not allow copies of this classs
-        Fast5Loader(Fast5Loader const&) = delete;
-        void operator=(Fast5Loader const&) = delete;
-};
+//         // do not allow copies of this classs
+//         Fast5Loader(Fast5Loader const&) = delete;
+//         void operator=(Fast5Loader const&) = delete;
+// };
 
 #endif
