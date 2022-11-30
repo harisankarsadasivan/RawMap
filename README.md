@@ -33,7 +33,6 @@ Will result in accuracy, true positive and true negative rates.
 **Dependencies:**  
 Tested on OpenCV [version 2.4.5](https://opencv.org/opencv-2-4-5-is-out/) for CentOS, 
 libhdf5,[HDF5](https://www.hdfgroup.org/downloads/hdf5/) must be installed. 
-You may use install_hdf5.sh to help with HDF5 installation.
 
 
 Libraries adapted:  
