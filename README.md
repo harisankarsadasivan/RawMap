@@ -6,6 +6,7 @@ MIT License
 Copyright (c) 2020 harisankarsadasivan
 
 If you are using RawMap in any part of your work, please cite:
+
 >Harisankar Sadasivan, Jack Wadden, Kush Goliya, Piyush Ranjan, Robert P. Dickson, David Blaauw, Reetuparna Das and Satish Narayanasamy. Rapid Real-time Squiggle Classification for Read until using RawMap. Archives of Clinical and Biomedical Research 7 (2023): 45-57.
 
 **Description**   
