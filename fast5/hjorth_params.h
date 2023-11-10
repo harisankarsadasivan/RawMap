@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
-#include "nanopolish_fast5_loader.h"
+//#include "nanopolish_fast5_loader.h"
+#include "event_detection.h"
+
 class hjorth_params{
 public:
 
